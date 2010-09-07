@@ -1,0 +1,3 @@
+[submodule "twitter-text-python"]
+	path = twitter-text-python
+	url = http://github.com/BonsaiDen/twitter-text-python.git

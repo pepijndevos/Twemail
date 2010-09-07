@@ -1,0 +1,13 @@
+{
+   "_id": "_design/user",
+   "_rev": "12-a29198931eb5a7a87398929210dfc822",
+   "language": "javascript",
+   "views": {
+       "tokens": {
+           "map": "function(doc) {\n    emit([doc._id, doc.password], [doc.key, doc.secret]); \n}"
+       },
+       "last": {
+           "map": "function(doc) {\n    emit(doc._id, doc.last); \n}"
+       }
+   }
+}
