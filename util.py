@@ -1,7 +1,6 @@
 import conf
 import oauth2 as oauth
 from twisted.web.client import getPage
-from twittytwister import twitter
 import cgi
 import twisted.web.error
 from urllib import quote

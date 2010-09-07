@@ -25,15 +25,15 @@ smtpPortal.registerChecker(ch)
 popPortal = Portal(TwitterPopRealm())
 popPortal.registerChecker(ch)
 
-application = service.Application("Twemail", 4294967294, 4294967294)
+application = service.Application("Twemail")
 challengers = {"LOGIN": LOGINCredentials, "PLAIN": PLAINCredentials}
 
 f = ESMTPFactory(None, smtpPortal)
 f.challengers = challengers
-internet.TCPServer(25, f).setServiceParent(application)
+internet.TCPServer(2500, f).setServiceParent(application)
 
 f = ServerFactory()
 f.protocol = pop3.POP3
 f.protocol.portal = popPortal
 f.challengers = challengers
-internet.TCPServer(110, f).setServiceParent(application)
+internet.TCPServer(1100, f).setServiceParent(application)
