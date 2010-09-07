@@ -6,7 +6,7 @@ Twemail allows you to read and write tweets using your mail client. It also supp
 
 == Installation ==
 
-Twemail requires Twisted and OAuth2 to be installed. The Python lib for processing tweets is also needed, but is bundled for some weird reason. I'll add a setup.py later to deal with this stuff.
+Twemail requires Twisted, Twitter-Text-Python and OAuth2 to be installed. You might try to use the setup.py for getting them.
 
 Run Twemail:
 
