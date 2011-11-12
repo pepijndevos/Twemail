@@ -1,4 +1,4 @@
 twisted
 oauth2
 pyOpenSSL
--e git+https://github.com/BonsaiDen/twitter-text-python.git#egg=twitter-text-python
+https://github.com/BonsaiDen/twitter-text-python/tarball/master
