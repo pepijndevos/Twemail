@@ -3,6 +3,7 @@ from email.mime.text import MIMEText
 from email.header import Header
 from ttp import Parser
 import codecs
+from conf import domain
 
 class TwitterTemplate(MIMEMultipart):
     def __init__(self, tweet, to):
@@ -12,11 +13,11 @@ class TwitterTemplate(MIMEMultipart):
         
         self['Subject'] = Header(tweet['text'].encode('utf-8'), 'utf-8')
         f = Header(tweet['user']['name'].encode('utf-8'), 'utf-8')
-        f.append('<{0}@twitter.com>'.format(tweet['user']['screen_name']), 'ascii')
+        f.append('<{0}@{1}>'.format(tweet['user']['screen_name'], domain), 'ascii')
         self['From'] = f
-        self['To'] = to+'@twitter.com'
+        self['To'] = to+'@'+domain
         self['Date'] = tweet['created_at']
-        self['Message-ID'] = "<{0}@twitter.com>".format(tweet['id'])
+        self['Message-ID'] = "<{0}@{1}>".format(tweet['id'], domain)
         
         self.attach(MIMEText(tweet['text'].encode('utf-8'), 'plain', _charset='utf-8'))
         
