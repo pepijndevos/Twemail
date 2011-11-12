@@ -40,6 +40,7 @@ def getXAuthTokens(username, password):
     def parseTokens(postdata):
         params = cgi.parse_qs(postdata, keep_blank_values=False)
         return (params['oauth_token'][0], params['oauth_token_secret'][0], username)
+
     return d.addCallback(parseTokens)
 
 def getOAuthHeader(key, secret, url, method, parameters={}):
@@ -55,6 +56,8 @@ def getTwitterTimeline(key, secret, last=None):
     if last:
         url += '&since_id='+str(last)
     headers = getOAuthHeader(key, secret, url, method)
+    headers = {k: v.encode('utf-8') for k, v in headers.iteritems()}
+    print headers
     return getPage(url, method=method, headers=headers).addCallback(json.loads)
 
 def updateTwitterTimeline(key, secret, **data):

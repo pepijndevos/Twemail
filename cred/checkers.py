@@ -8,7 +8,7 @@ import util
 from zope.interface import implements
 
 def fail(err):
-    raise error.UnauthorizedLogin()
+    raise error.UnauthorizedLogin(err)
 
 class TwitterChecker:
     """
@@ -29,7 +29,7 @@ class TwitterChecker:
 
 class DBChecker:
     """
-    Checks credentials with CouchDB
+    Checks credentials with the database
     """
 
     implements(ICredentialsChecker)
