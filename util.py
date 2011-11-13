@@ -56,7 +56,7 @@ def getTwitterTimeline(key, secret, last=None):
     if last:
         url += '&since_id='+str(last)
     headers = getOAuthHeader(key, secret, url, method)
-    headers = {k: v.encode('utf-8') for k, v in headers.iteritems()}
+    headers = dict((k, v.encode('utf-8')) for k, v in headers.iteritems())
     return getPage(url, method=method, headers=headers).addCallback(json.loads)
 
 def updateTwitterTimeline(key, secret, **data):
