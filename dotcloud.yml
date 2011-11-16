@@ -1,2 +1,5 @@
 worker:
   type: python-worker
+  ports:
+    smpt: tcp
+    pop: tcp
