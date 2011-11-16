@@ -8,4 +8,7 @@ fi
 
 ~/bin/pip install -r requirements.txt
 
+pwd
+echo "copy ourselves"
+cp -a . ~
 echo "We're doing well. Please proceed"
