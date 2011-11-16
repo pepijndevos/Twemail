@@ -5,5 +5,4 @@ worker:
     smpt: tcp
     pop3: tcp
   systempackages:
-    - python
-    - pip
+    - python-pip
