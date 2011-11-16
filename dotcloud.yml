@@ -1,5 +1,9 @@
 worker:
-  type: python-worker
+  type: custom
+  buildscript: builder
   ports:
     smpt: tcp
-    pop: tcp
+    pop3: tcp
+  systempackages:
+    - python
+    - pip
