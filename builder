@@ -1,3 +1,4 @@
 #!/bin/bash
 
-pip install -r requirements.txt
+virtualenv --no-site-packages .
+bin/pip install -r requirements.txt

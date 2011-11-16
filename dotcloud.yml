@@ -5,4 +5,6 @@ worker:
     smpt: tcp
     pop3: tcp
   systempackages:
+    - python
     - python-pip
+    - python-virtualenv
