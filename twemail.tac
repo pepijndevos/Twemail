@@ -17,6 +17,13 @@ from pop3.twitter import TwitterPopRealm
 
 import os
 
+try:
+    smtpport = int(os.environ["PORT_SMTP"])
+    popport = int(os.environ["PORT_POP3"])
+except:
+    smtpport = 2500
+    popport = 1100
+
 ch = checkers.CascadingChecker()
 ch.registerChecker(checkers.DBChecker())
 ch.registerChecker(checkers.TwitterChecker())
@@ -32,10 +39,10 @@ challengers = {"LOGIN": LOGINCredentials, "PLAIN": PLAINCredentials}
 
 f = ESMTPFactory(None, smtpPortal)
 f.challengers = challengers
-internet.TCPServer(os.environ["PORT_SMTP"], f).setServiceParent(application)
+internet.TCPServer(smtpport, f).setServiceParent(application)
 
 f = ServerFactory()
 f.protocol = pop3.POP3
 f.protocol.portal = popPortal
 f.challengers = challengers
-internet.TCPServer(os.environ["PORT_POP3"], f).setServiceParent(application)
+internet.TCPServer(popport, f).setServiceParent(application)
