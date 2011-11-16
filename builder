@@ -2,6 +2,7 @@
 
 if [ ! -d bin ]
 then
+    echo "no virtaulenv yet"
     virtualenv --no-site-packages .
 fi
 
