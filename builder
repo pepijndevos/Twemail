@@ -1,14 +1,26 @@
 #!/bin/bash
+CODEROOT="$PWD"
+cd "$(dirname "$0")"
+rm ~/profile
 
-if [ ! -d ~/bin ]
+PYTHON=python$SERVICE_ENVIRONMENT_PYTHON_VERSION
+echo -n "Looking for Python interpreter ($PYTHON): "
+which $PYTHON || {
+    echo "not found, aborting."
+    exit 1
+}
+[ -d ~/virtualenv ] ||
+    virtualenv --python=$PYTHON ~/virtualenv
+. ~/virtualenv/bin/activate
+echo '. ~/virtualenv/bin/activate' >>~/profile
+
+cd "$CODEROOT/$SERVICE_APPROOT"
+[ -f requirements.txt ] &&
+    pip install --download-cache=~/.pip-cache -r requirements.txt
+if [ -f setup.py ]
 then
-    echo "no virtaulenv yet"
-    virtualenv --no-site-packages ~
+    pip install .
+else
+    cp -a . ~
+    echo 'export PYTHONPATH=~' >>~/profile
 fi
-
-~/bin/pip install -r requirements.txt
-
-pwd
-echo "copy ourselves"
-cp -a . ~
-echo "We're doing well. Please proceed"

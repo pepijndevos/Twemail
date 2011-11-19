@@ -4,8 +4,7 @@ worker:
   ports:
     smpt: tcp
     pop3: tcp
-  process: bin/twistd -ny twemail.tac
-  systempackages:
-    - python
-    - python-pip
-    - python-virtualenv
+  process: ~/run
+  approot: twemail
+  environment:
+    PYTHON_VERSION: 2.7
