@@ -16,4 +16,4 @@ xauth = {
 }
 
 secret = 'fietspomp'
-domain = 'twitteremail.herokuapp.com'
+domain = 'twitteremail-pepijndevos.dotcloud.com'
