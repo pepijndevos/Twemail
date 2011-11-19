@@ -17,12 +17,8 @@ from pop3.twitter import TwitterPopRealm
 
 import os
 
-try:
-    smtpport = int(os.environ["PORT_SMTP"])
-    popport = int(os.environ["PORT_POP3"])
-except:
-    smtpport = 2500
-    popport = 1100
+smtpport = int(os.environ['PORT_SMPT'])
+popport = int(os.environ['PORT_POP3'])
 
 ch = checkers.CascadingChecker()
 ch.registerChecker(checkers.DBChecker())
