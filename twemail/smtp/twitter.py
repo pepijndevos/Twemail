@@ -5,6 +5,7 @@ import util
 from twisted.cred.portal import IRealm
 from email.parser import Parser
 import re
+from conf import domain
 
 class TwitterSmtpRealm:
     implements(IRealm)
@@ -31,7 +32,7 @@ class TwitterMessageDelivery:
         return origin
     
     def validateTo(self, user):
-        if user.dest.domain == "twitter.com":
+        if user.dest.domain == domain:
             return lambda: TwitterMessage(self.key, self.secret, self.username)
         else:
             raise smtp.SMTPBadRcpt(user)
