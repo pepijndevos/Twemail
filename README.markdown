@@ -1,15 +1,26 @@
 # Twemail #
 
-Twemail is a Twisted server that acts as a proxy between Twitter and your email application, by providing POP and SMTP implementations that interact with Twitter.
+Twemail is a Twisted server that acts as a proxy between Twitter and your email application, by providing POP and SMTP implementations that interacts with Twitter.
 
 Twemail allows you to read and write tweets using your mail client. It also supports replying and retweeting.
 
-## Installation ##
+## Configuration ##
 
-Twemail requires Twisted, Twitter-Text-Python and OAuth2 to be installed. You might try to use the setup.py for getting them.
+Twemail runs on Dotcloud at `twitteremail-pepijndevos.dotcloud.com` on port 18069 for POP3 and 18070 for SMTP.
 
-Run Twemail:
+Just add a new account to your email application with the email address `<your-twitter-username>@twitteremail-pepijndevos.dotcloud.com` and your twitter password.
 
-    twistd -ny twemail.tac
+Use password authentication with the above ports. Resort to your applications' documentation for how to do this.
 
-Set up a new email account using username@twitter.com and your Twitter password. Set your server to localhost. Configure your client to use port 2500 for SMTP and port 1100 for POP.
+## Usage ##
+
+Basically you just read your email. Replying is replying, forwarding is retweeting, sending a message to `post@twitteremail-pepijndevos.dotcloud.com` posts a new tweet.
+
+## Known deficiencies ##
+
+**patches welcome**
+
+* No SSL
+* Forwarding/retweeting is a hack
+* Seemingly never-ending unicode/HTML issues
+* Uses Python's shelve
